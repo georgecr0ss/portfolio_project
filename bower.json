@@ -1,0 +1,21 @@
+{
+  "name": "pf_p",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "georgecr0ss <george.krystew@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/georgecr0ss/portfolio_project",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "font-awsome#^4.6.3"
+  }
+}
