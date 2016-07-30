@@ -1,17 +1,17 @@
 var express = require('express'),
 app = express();
 
-var PORT = 5000;
+var PORT = process.env.PORT || 5000;
 
 //app.use allows us to set middleware,
-app.use(express.static('public' ));
+app.use(express.static('public'));
 app.use(express.static('src/views'));
 
 app.get('/', function (req, res) {
     res.send('Hello World');
 });
 
-app.get('/books', function(req, res) {
+app.get('/books', function (req, res) {
     res.send('Hello Books');
 });
 
