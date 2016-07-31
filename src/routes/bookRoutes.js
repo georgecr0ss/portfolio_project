@@ -29,7 +29,7 @@ var books = [{
 
 booksRouter.route('/')
 	.get(function (req, res) {
-    res.render('books', {
+    res.render('bookListView', {
         title: 'Portfolio',
         nav: [{
             Link: '/Books',
@@ -39,12 +39,23 @@ booksRouter.route('/')
             Text: 'Mark Twain'
         }],
         books: books
-    })
+    });
 });
-booksRouter.route('/single')
+booksRouter.route('/:id')
 	.get(function(req, res) {
-    res.send('Hello Book')
-})
+    var id =  req.params.id;
+    res.render('bookView', {
+        title: 'Portfolio',
+        nav: [{
+            Link: '/Books',
+            Text: 'Authors'
+        }, {
+            Link: '/Mark Twain',
+            Text: 'Mark Twain'
+        }],
+        books: books[id]
+    });
+});
 
 // app.use(express.static('src/views'));
 
