@@ -5,26 +5,32 @@ var router = function(nav) {
     var books = [{
         title: 'Tom Sawyer',
         author: 'Mark Twain',
+        genre: 'Historical',
         read: false
         },{
         title: 'The Prince and the Pauper',
         author: 'Mark Twain',
+        genre: 'Historical',
         read: false
         },{
         title: 'До Чикаго и назад',
         author: 'Алеко Константинов',
+        genre: 'Historical',
         read: false
         },{
         title: 'Бай Ганьо',
         author: 'Алеко Константинов',
+        genre: 'Historical',
         read: false
         },{
         title: 'Под игото',
         author: 'Иван Вазов',
+        genre: 'Historical',
         read: false
         },{
         title: 'Мамино детенце',
         author: 'Любен Каравелов',
+        genre: 'Historical',
         read: false
     }];
 
