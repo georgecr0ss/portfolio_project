@@ -1,54 +1,51 @@
 var express = require('express');
 var booksRouter = express.Router();
+var mongodb = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
+
 var router = function(nav) {
-
-    var books = [{
-        title: 'Tom Sawyer',
-        author: 'Mark Twain',
-        genre: 'Historical',
-        read: false
-        },{
-        title: 'The Prince and the Pauper',
-        author: 'Mark Twain',
-        genre: 'Historical',
-        read: false
-        },{
-        title: 'To Chicago and backwards',
-        author: 'Aleko Konstantinov',
-        genre: 'Historical',
-        read: false
-        },{
-        title: 'Bro Ganyo',
-        author: 'Aleko Konstantinov',
-        genre: 'Historical',
-        read: false
-        },{
-        title: 'Slavery',
-        author: 'Ivan Vazov',
-        genre: 'Historical',
-        read: false
-        },{
-        title: 'Mommy\'s kid',
-        author: 'Luben Karavelov' ,
-        genre: 'Historical',
-        read: false
-    }];
-
+ 
     booksRouter.route('/')
         .get(function (req, res) {
-        res.render('bookListView', {
-            title: 'Portfolio',
-            nav: nav,
-            books: books
+        var url = 'mongodb://localhost:27017/libraryApp';
+
+        mongodb.connect(url, function(err, db){
+            var collection = db.collection('books');
+            collection.find({}).toArray(
+                function(err, results){                    
+                    res.render('bookListView', {
+                        title: 'Portfolio',
+                        nav: nav,
+                        books: results
+                    });
+                }
+            );
+
+        db.close();
         });
     });
+
     booksRouter.route('/:id')
-        .get(function(req, res) {
-        var id =  req.params.id;
-        res.render('bookView', {
-            title: 'Portfolio',
-            nav: nav,
-            books: books[id]
+        .get(function (req, res) {
+            console.log(req.params.id)
+            var id =   new objectId(req.params.id);
+            var url = 'mongodb://localhost:27017/libraryApp';
+
+            mongodb.connect(url, function(err, db){
+
+                var collection = db.collection('books');
+
+                collection.findOne({_id: id},
+                    function(err, results) {                    
+                        res.render('bookView', {
+                            title: 'Portfolio',
+                            nav: nav,
+                            book: results
+                        });
+                    }
+                );
+
+            db.close();
         });
     });
 
