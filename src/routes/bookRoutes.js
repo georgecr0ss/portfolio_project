@@ -13,23 +13,23 @@ var router = function(nav) {
         genre: 'Historical',
         read: false
         },{
-        title: 'До Чикаго и назад',
-        author: 'Алеко Константинов',
+        title: 'To Chicago and backwards',
+        author: 'Aleko Konstantinov',
         genre: 'Historical',
         read: false
         },{
-        title: 'Бай Ганьо',
-        author: 'Алеко Константинов',
+        title: 'Bro Ganyo',
+        author: 'Aleko Konstantinov',
         genre: 'Historical',
         read: false
         },{
-        title: 'Под игото',
-        author: 'Иван Вазов',
+        title: 'Slavery',
+        author: 'Ivan Vazov',
         genre: 'Historical',
         read: false
         },{
-        title: 'Мамино детенце',
-        author: 'Любен Каравелов',
+        title: 'Mommy\'s kid',
+        author: 'Luben Karavelov' ,
         genre: 'Historical',
         read: false
     }];
@@ -62,6 +62,6 @@ var router = function(nav) {
     });
 
     return booksRouter;
-}
+};
 
 module.exports = router;
