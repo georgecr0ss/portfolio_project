@@ -102,14 +102,21 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-               Sign in 
-            </div>
-            <div class="col-md-10 col-sm-9"> 
-              Sign up
-              <form  action="/auth/signUp" method="post" name="signUpForm" accept-charset="utf-8">
+               Sign in form
+              <form  name="signInForm" action="/auth/signIn" method="post" accept-charset="utf-8">
 
-                 <input type="text" name="userName" id="userName" value="" placeholder="">
-                 <input type="password" name="password" id="password" value="" placeholder="">
+                 Username: <input type="text" name="userName" id="userName" value="" placeholder=""><br>
+                 Password:  <input type="password" name="password" id="password" value="" placeholder=""><br>
+                 <input type="submit" value="Sign In">
+                 
+              </form>
+            </div>
+            <div class="col-md-2 col-sm-3 text-center"> 
+              Sign up form
+              <form  name="signUpForm" action="/auth/signUp" method="post"  accept-charset="utf-8">
+
+                 Username: <input type="text" name="userName" id="userName" value="" placeholder=""><br>
+                 Password:  <input type="password" name="password" id="password" value="" placeholder=""><br>
                  <input type="submit" value="Sign Up">
                  
               </form>
