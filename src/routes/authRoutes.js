@@ -38,6 +38,12 @@ var router = function(){
 				res.redirect('/auth/profile');
 			});
 	authRouter.route('/profile')
+			.all(function(req, res, next){
+				if(!req.user) {
+					res.redirect('/')
+				}
+				next();
+			})
 			.get(function(req, res) {
 			// console.log(req.user);
 				res.json(req.user);

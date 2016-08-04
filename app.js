@@ -8,7 +8,7 @@ var passport  = require('passport');
 
 var app = express();
 
-var mnogoUrl  ='mongodb://gogo:66@ds029655.mlab.com:29655/books';
+var mnogoUrl  ='mongodb://localhost:27017/libraryApp';
 var PORT = process.env.PORT || 5000;
 var nav =  [{
     Link: '/Books',
