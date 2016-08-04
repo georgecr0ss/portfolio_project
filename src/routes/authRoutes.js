@@ -17,12 +17,11 @@ var router = function(){
 			        		username: req.body.userName,
 			        		password: req.body.password
 			        	};
-
 			        	collection.insert(user, function(err, results) {
 			        		req.login(results.ops[0], function(){
 								res.redirect('/auth/profile');
 							});
-			        	})
+			        	});
 
 			        	db.close();
 			        });
@@ -33,7 +32,8 @@ var router = function(){
 
 	authRouter.route('/signIn')
 			.post(passport.authenticate('local', {
-					failureRedirect: '/'
+					failureRedirect: '/',
+					failurFlash: true
 				}), function(req, res) {
 				res.redirect('/auth/profile');
 			});

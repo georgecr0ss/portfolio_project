@@ -17,6 +17,6 @@ var route = function (app) {
 
 
 	return passport;
-}
+};
 
 module.exports = route;
