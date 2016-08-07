@@ -16,15 +16,17 @@
     "ejs": "~2.5.1",
     "express": "~4.13.0",
     "express-session": "~1.14.0",
+    "mongodb": "~2.2.5",
     "passport": "~0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "~1.0.0",
+    "xml2js": "~0.4.17"
   },
   "devDependencies": {
     "gulp": "~3.9.1",
-    "gulp-inject": "^4.1.0",
+    "gulp-inject": "~4.1.0",
     "gulp-jscs": "~4.0.0",
     "gulp-jshint": "~2.0.1",
-    "gulp-nodemon": "^2.1.0",
+    "gulp-nodemon": "~2.1.0",
     "jshint": "~2.9.2",
     "jshint-stylish": "~2.2.0",
     "wiredep": "~4.0.0"

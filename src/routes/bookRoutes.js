@@ -4,57 +4,20 @@ var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
 var router = function(nav) {
-    
-    booksRouter.use(function(req, res, next){
-        if (!req.user) {
-            res.redirect('/');
-        }
-        next();
-    })
+    var bookService = require('../services/goodreadsService')();
+
+    var bookController = require('../controllers/bookController')(bookService, nav);
+
+    booksRouter.use(bookController.middleware);
 
     booksRouter.route('/')
-        .get(function (req, res) {
-        var url = 'mongodb://localhost:27017/libraryApp';
+        .get(bookController.getIndex);
 
-        mongodb.connect(url, function(err, db){
-            var collection = db.collection('books');
-            collection.find({}).toArray(
-                function(err, results){                    
-                    res.render('bookListView', {
-                        title: 'Portfolio',
-                        nav: nav,
-                        books: results
-                    });
-                }
-            );
-
-        db.close();
-        });
-    });
+    booksRouter.route('/asJson')
+        .get(bookController.asJson);
 
     booksRouter.route('/:id')
-        .get(function (req, res) {
-            console.log(req.params.id);
-            var id =   new ObjectId(req.params.id);
-            var url = 'mongodb://localhost:27017/libraryApp';
-
-            mongodb.connect(url, function(err, db){
-
-                var collection = db.collection('books');
-
-                collection.findOne({_id: id},
-                    function(err, results) {                    
-                        res.render('bookView', {
-                            title: 'Portfolio',
-                            nav: nav,
-                            book: results
-                        });
-                    }
-                );
-
-            db.close();
-        });
-    });
+        .get(bookController.getById);
 
     // app.use(express.static('src/views'));
 

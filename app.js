@@ -3,12 +3,11 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport  = require('passport');
-
-
+var xml2js = require('xml2js');
 
 var app = express();
 
-var mnogoUrl  ='mongodb://localhost:27017/libraryApp';
+var mnogoUrl  = 'mongodb://localhost:27017/libraryApp';
 var PORT = process.env.PORT || 5000;
 var nav =  [{
     Link: '/Books',
@@ -20,7 +19,7 @@ var nav =  [{
     Link: '/Admin/addBooks',
     Text: 'Admin'
 }];
-var booksRouter = require('./src/routes/bookRoutes')(nav); 
+var booksRouter = require('./src/routes/bookRoutes')(nav);
 var adminRouter = require('./src/routes/adminRoutes')(nav);
 var authRouter = require('./src/routes/authRoutes')(nav);
 
@@ -30,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(session({secret: 'library'}));
 
-//passport middleware 
+//passport middleware
 require('./src/config/passport')(app);
 
 app.set('views', './src/views');
